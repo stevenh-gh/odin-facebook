@@ -7,9 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 5.times do
-  User.create(
+  u = User.create(
     name: Faker::Name.unique.name,
     email: Faker::Internet.unique.email,
     password: 'secretpass123'
   )
+  rand(1..3).times do
+    u.posts.create(text: Faker::Lorem.sentence)
+  end
 end
