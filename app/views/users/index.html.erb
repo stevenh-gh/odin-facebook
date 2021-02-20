@@ -1,0 +1,9 @@
+<h1>Index</h1>
+
+<% @users.each do |u| %>
+  Name: <%= u.name %><br>
+  Email: <%= u.email %><br>
+  <br>
+<% end %>
+
+<%= render 'links' %>
