@@ -48,6 +48,7 @@ group :development do
   gem 'pry-rails', '~> 0.3.9'
   gem 'better_errors', '~> 2.9', '>= 2.9.1'
   gem 'binding_of_caller', '~> 1.0'
+  gem 'faker', '~> 2.16'
 end
 
 group :test do
