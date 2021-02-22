@@ -1,5 +1,11 @@
 <h1>New post</h1>
 
+<% flash.each do |name, msgs| %>
+  <% msgs.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+
 <%= form_with(model: @post, url: user_posts_path) do |f| %>
   <%= f.hidden_field(:user_id, value: current_user.id) %>
   <%= f.text_area(:text, size: '40x10', autofocus: true) %><br>
