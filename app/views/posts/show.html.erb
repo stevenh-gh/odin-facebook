@@ -4,4 +4,17 @@
   <%= @post.text %>
 </p>
 
+<h4>Comments</h4>
+<% Comment.where(user_id: current_user.id, post_id: @post.id).each do |c| %>
+  <%= c.comment %><br>
+<% end %>
+
+<h4>Add a comment</h4>
+<%= form_with(model: [current_user, Comment.new]) do |f| %>
+  <%= f.hidden_field(:user_id, value: current_user.id) %>
+  <%= f.hidden_field(:post_id, value: @post.id) %>
+  <%= f.text_area(:comment, size: '20x5') %><br>
+  <%= f.submit %>
+<% end %>
+
 <%= render('layouts/links') %>
