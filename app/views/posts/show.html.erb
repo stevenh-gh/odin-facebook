@@ -9,6 +9,12 @@
   <%= c.comment %><br>
 <% end %>
 
+<% flash.each do |name, msgs| %>
+  <% msgs.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
+
 <h4>Add a comment</h4>
 <%= form_with(model: [current_user, Comment.new]) do |f| %>
   <%= f.hidden_field(:user_id, value: current_user.id) %>
