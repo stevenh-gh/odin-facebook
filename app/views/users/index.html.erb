@@ -1,0 +1,10 @@
+<h1>Index</h1>
+
+<% @users.each do |u| %>
+  Name: <%= u.name %><br>
+  Email: <%= u.email %><br>
+  Posts: <%= link_to('View posts', user_posts_path(u)) %><br>
+  <br>
+<% end %>
+
+<%= render('layouts/links') %>
