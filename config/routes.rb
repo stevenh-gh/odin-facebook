@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources(:posts)
     resources(:comments)
   end
+  resources(:friendships, only: %i[create destroy])
+
   root('users#index')
   get('rails/info/routes' => 'routes')
 end
