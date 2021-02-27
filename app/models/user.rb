@@ -11,4 +11,7 @@ class User < ApplicationRecord
 
   has_many(:friendships)
   has_many(:friends, through: :friendships)
+
+  has_many(:sent_friend_requests, foreign_key: 'sender_id', class_name: 'FriendRequest')
+  has_many(:friend_requests, foreign_key: 'receiver_id')
 end
