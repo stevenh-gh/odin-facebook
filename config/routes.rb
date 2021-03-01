@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources(:posts)
     resources(:comments)
   end
-  resources(:friendships, only: %i[create destroy])
+  resources(:friendships, only: %i[index create destroy])
   resources(:friend_requests)
 
   root('users#index')
