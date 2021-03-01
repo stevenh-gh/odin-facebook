@@ -30,9 +30,15 @@ class FriendRequestsController < ApplicationController
   def validate_friend_request
     if params[:sender_id].eql?(params[:receiver_id])
       flash_with_redirect(:error, 'You cannot add yourself as friend!', root_path)
-    elsif FriendRequest.exists?(sender_id: params[:sender_id],
-                                receiver_id: params[:receiver_id])
+    end
+
+    if FriendRequest.exists?(sender_id: params[:sender_id],
+                             receiver_id: params[:receiver_id])
       flash_with_redirect(:error, 'Request already exists!', root_path)
+    end
+
+    if current_user.friends.exists?(id: params[:receiver_id])
+      flash_with_redirect(:error, 'User is already a friend', root_path)
     end
   end
 end
