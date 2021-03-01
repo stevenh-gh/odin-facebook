@@ -1,0 +1,9 @@
+<h1>Friends</h1>
+
+<% @friendships.each do |f| %>
+  <ul>
+    <li><%= f.friend.name %></li>
+  </ul>
+<% end %>
+
+<%= render('layouts/links') %>

@@ -1,4 +1,8 @@
 class FriendshipsController < ApplicationController
+  def index
+    @friendships = Friendship.where(user_id: current_user.id)
+  end
+
   def create
     friendships = Friendship.make_friendship(current_user.id, params[:friend_id])
     if friendships[0].save && friendships[1].save
