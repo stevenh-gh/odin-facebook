@@ -1,0 +1,13 @@
+<h1>Friend requests</h1>
+
+<% @friend_requests.each do |fr| %>
+  <ul>
+    <li>
+      <%= fr.sender.name %>
+      <%= link_to('Accept', friendships_path(friend_id: fr.sender), method: :post) %>
+      <%= link_to('Decline', friend_request_path(fr), method: :delete) %>
+    </li>
+  </ul>
+<% end %>
+
+<%= render('layouts/links') %>

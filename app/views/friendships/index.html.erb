@@ -1,0 +1,9 @@
+<h1>Friends</h1>
+
+<% @friendships.each do |f| %>
+  <ul>
+    <li><%= f.friend.name %> (<%= link_to('Delete', friendship_path(f), method: :delete) %>)</li>
+  </ul>
+<% end %>
+
+<%= render('layouts/links') %>

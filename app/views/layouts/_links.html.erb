@@ -1,5 +1,11 @@
 <%= link_to('Home', root_path) %>
 <%= link_to('Sign out', destroy_user_session_path, method: :delete) %>
 <%= link_to('New post', new_user_post_path(current_user.id)) %>
+<%= link_to('Friends', friendships_path) %>
+
+<% fr = current_user.friend_requests %>
+<% unless fr.blank? %>
+  <%= link_to("Friend requests (#{fr.count})", friend_requests_path) %>
+<% end %>
 
 <% console %>

@@ -1,7 +1,12 @@
 <h1>Index</h1>
 
+<% flash.each do |name, msg| %>
+  <%= msg %><br>
+<% end %>
+<br>
+
 <% @users.each do |u| %>
-  Name: <%= u.name %><br>
+  Name: <%= u.name %> (<%= link_to('Add friend', friend_requests_path(sender_id: current_user.id, receiver_id: u.id), method: :post) %>)<br>
   Email: <%= u.email %><br>
   Posts: <%= link_to('View posts', user_posts_path(u)) %><br>
   <br>
