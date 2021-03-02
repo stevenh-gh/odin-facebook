@@ -4,6 +4,8 @@
   <%= @post.text %>
 </p>
 
+<%= link_to('Likes',  user_post_likes_path(current_user, @post), method: :post) %> (<%= @post.likes.count %>)
+
 <% unless @comments.blank? %>
   <h4>Comments</h4>
   <% @comments.each do |c| %>

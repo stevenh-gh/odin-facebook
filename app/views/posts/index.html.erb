@@ -1,7 +1,8 @@
 <h1>Posts index</h1>
 
 <% @posts.each_with_index do |post, idx| %>
-  <%= idx + 1 %>: <%= link_to("#{post.title}", user_post_path(current_user.id, post.id)) %><br>
+  <%= idx + 1 %>: <%= link_to("#{post.title}", user_post_path(current_user.id, post.id)) %>
+  <%= link_to('Likes',  user_post_likes_path(current_user, post), method: :post) %> (<%= post.likes.count %>)<br>
   <br>
 <% end %>
 
