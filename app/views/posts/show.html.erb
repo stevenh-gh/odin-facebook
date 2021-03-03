@@ -1,5 +1,7 @@
 <h1><%= @post.title %></h1>
 
+<%= render('layouts/flash') %>
+
 <p>
   <%= @post.text %>
 </p>
@@ -10,12 +12,6 @@
   <h4>Comments</h4>
   <% @comments.each do |c| %>
     <%= c.comment %><br>
-  <% end %>
-<% end %>
-
-<% flash.each do |name, msgs| %>
-  <% msgs.each do |msg| %>
-    <%= msg %>
   <% end %>
 <% end %>
 
