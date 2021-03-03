@@ -10,10 +10,15 @@ class LikesController < ApplicationController
     end
   end
 
+  def destroy
+    Like.find(params[:id]).destroy
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def check_liked
-    if Like.exists?(user_id: current_user.id)
+    if current_user.likes.exists?(post_id: params[:post_id])
       flash[:error] = 'You already liked this post!'
       redirect_back(fallback_location: root_path)
     end
