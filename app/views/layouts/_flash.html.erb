@@ -1,0 +1,4 @@
+<% flash.each do |name, msg| %>
+  <%= msg.is_a?(Array) ? msg[0] : msg %><br>
+<% end %>
+<br>
