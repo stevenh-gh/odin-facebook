@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: 
+  birthday: 2021-03-03
+  hometown: MyString
+  current_location: MyString
+  sex: MyString
+  bio: MyText
+
+two:
+  age: 
+  birthday: 2021-03-03
+  hometown: MyString
+  current_location: MyString
+  sex: MyString
+  bio: MyText
