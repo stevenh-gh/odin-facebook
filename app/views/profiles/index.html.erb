@@ -1,0 +1,19 @@
+<h1>Profile index</h1>
+
+<%= render('layouts/flash') %>
+
+  <% if @profile.photo.attached? %>
+    <image src='<%= url_for(@profile.photo) %>'><br>
+  <% else %>
+    No photo uploaded
+  <% end %>
+ 
+Age: <%= @profile.age || 'Not set' %><br>
+Sex: <%= @profile.sex || 'Not set' %><br>
+Birthday: <%= @profile.birthday || 'Not set' %><br>
+Current location: <%= @profile.current_location || 'Not set' %><br>
+Hometown: <%= @profile.hometown || 'Not set' %><br>
+Bio: <%= @profile.bio || 'Not set' %><br>
+
+<%= button_to('Update', edit_user_profile_path(current_user, @profile), method: :get) %>
+<%= render('layouts/links') %>
