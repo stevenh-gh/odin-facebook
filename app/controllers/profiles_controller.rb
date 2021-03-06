@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile.attributes = profile_params
-    @profile.age = Date.today - @profile.birthday
+    @profile.age = Date.today.year - @profile.birthday.year unless profile_params[:birthday].blank?
     if @profile.save
       flash[:success] = 'Profile has been updated.'
       redirect_to(user_profiles_path)

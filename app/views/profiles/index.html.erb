@@ -3,17 +3,17 @@
 <%= render('layouts/flash') %>
 
   <% if @profile.photo.attached? %>
-    <image src='<%= url_for(@profile.photo) %>'><br>
+    <image src='<%= url_for(@profile.photo) %>' width='200' height='200'><br>
   <% else %>
-    No photo uploaded
+    No photo uploaded<br>
   <% end %>
  
 Age: <%= @profile.age || 'Not set' %><br>
 Sex: <%= @profile.sex || 'Not set' %><br>
 Birthday: <%= @profile.birthday || 'Not set' %><br>
-Current location: <%= @profile.current_location || 'Not set' %><br>
-Hometown: <%= @profile.hometown || 'Not set' %><br>
-Bio: <%= @profile.bio || 'Not set' %><br>
+Current location: <%= @profile.current_location.blank? ? 'Not set' : @profile.current_location %><br>
+Hometown: <%= @profile.hometown.blank? ? 'Not set' : @profile.hometown %><br>
+Bio: <%= @profile.bio.blank? ? 'Not set' : @profile.bio %><br>
 
 <% unless !current_user.id.eql?(params[:user_id].to_i) %>
   <%= button_to('Update', edit_user_profile_path(current_user, @profile), method: :get) %>

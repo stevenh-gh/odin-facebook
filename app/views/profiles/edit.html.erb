@@ -3,7 +3,7 @@
 
 <%= form_with(model: [current_user, @profile]) do |f| %>
   <% if @profile.photo.attached? %>
-    <image src='<%= url_for(@profile.photo) %>'><br>
+    <image src='<%= url_for(@profile.photo) %>' width='200' height='200'><br>
   <% end %>
   Photo: <%= f.file_field(:photo, accept: 'image/jpeg, image/jpg, image/png') %><br>
   Sex: <%= f.select(:sex, options_for_select(['Male', 'Female'])) %><br>
