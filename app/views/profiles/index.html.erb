@@ -15,5 +15,7 @@ Current location: <%= @profile.current_location || 'Not set' %><br>
 Hometown: <%= @profile.hometown || 'Not set' %><br>
 Bio: <%= @profile.bio || 'Not set' %><br>
 
-<%= button_to('Update', edit_user_profile_path(current_user, @profile), method: :get) %>
+<% unless !current_user.id.eql?(params[:user_id].to_i) %>
+  <%= button_to('Update', edit_user_profile_path(current_user, @profile), method: :get) %>
+<% end %>
 <%= render('layouts/links') %>
