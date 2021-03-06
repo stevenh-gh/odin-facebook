@@ -16,4 +16,12 @@ class User < ApplicationRecord
 
   has_many(:sent_friend_requests, foreign_key: 'sender_id', class_name: 'FriendRequest')
   has_many(:friend_requests, foreign_key: 'receiver_id')
+
+  before_create(:build_profile)
+
+  private
+
+  def build_profile_before_create
+    build_profile
+  end
 end
