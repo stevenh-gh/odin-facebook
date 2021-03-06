@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   before_action(:set_profile, only: %i[edit update])
 
   def index
-    @profile = User.find(params[:user_id]).profile || User.find(params[:user_id]).create_profile
+    @profile = Profile.where(user_id: params[:user_id]).first
   end
 
   def edit
