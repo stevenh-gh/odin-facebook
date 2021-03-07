@@ -50,6 +50,7 @@ group :development do
   gem 'binding_of_caller', '~> 1.0'
   gem 'faker', '~> 2.16'
   gem 'pgreset', '~> 0.3'
+  gem 'letter_opener', '~> 1.7'
 end
 
 group :test do
