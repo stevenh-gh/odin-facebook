@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources(:likes)
     end
     resources(:comments)
+    resources(:profiles)
   end
   resources(:friendships, only: %i[index create destroy])
   resources(:friend_requests)

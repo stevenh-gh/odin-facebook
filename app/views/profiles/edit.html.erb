@@ -1,0 +1,17 @@
+<h1>Edit Profile</h1>
+<%= render('layouts/flash') %>
+
+<%= form_with(model: [current_user, @profile]) do |f| %>
+  <% if @profile.photo.attached? %>
+    <image src='<%= url_for(@profile.photo) %>' width='200' height='200'><br>
+  <% end %>
+  Photo: <%= f.file_field(:photo, accept: 'image/jpeg, image/jpg, image/png') %><br>
+  Sex: <%= f.select(:sex, options_for_select(['Male', 'Female'])) %><br>
+  Birthday: <%= f.date_field(:birthday, max: Date.today) %><br>
+  Hometown: <%= f.text_field(:hometown) %><br>
+  Current location: <%= f.text_field(:current_location) %><br>
+  Bio:<br><%= f.text_area(:bio, size: '50x3') %><br>
+  <%= f.submit %>
+<% end %>
+
+<%= render('layouts/links') %>
