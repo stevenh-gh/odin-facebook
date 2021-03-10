@@ -1,5 +1,5 @@
 <%= link_to('Home', root_path) %>
-<%= link_to('Profile', user_profiles_path(current_user)) %>
+<%= link_to('Profile', user_profile_path(current_user)) %>
 <%= link_to('Sign out', destroy_user_session_path, method: :delete) %>
 <%= link_to('New post', new_user_post_path(current_user.id)) %>
 <%= link_to('Friends', friendships_path) %>

@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   before_action(:authorize_user, only: %i[edit update])
   before_action(:set_profile, only: %i[edit update])
 
-  def index
+  # def index
+  def show
     @profile = Profile.where(user_id: params[:user_id]).first
   end
 
@@ -15,7 +16,7 @@ class ProfilesController < ApplicationController
     @profile.age = Date.today.year - @profile.birthday.year unless profile_params[:birthday].blank?
     if @profile.save
       flash[:success] = 'Profile has been updated.'
-      redirect_to(user_profiles_path)
+      redirect_to(user_profile_path)
     else
       redirect(root_path)
     end
