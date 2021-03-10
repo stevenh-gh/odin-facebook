@@ -42,10 +42,6 @@ class User < ApplicationRecord
     end
   end
 
-  def passthru
-    super
-  end
-
   private
 
   def build_profile_before_create
