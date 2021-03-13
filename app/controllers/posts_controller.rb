@@ -4,9 +4,27 @@ class PostsController < ApplicationController
   def index
     # @posts = User.where(id: params[:user_id]).last.posts
     user = User.find(params[:user_id])
-    @posts = (Post.where(user_id: user.id) +
-              user.friends.inject([]) { |acc, friend| acc + Post.where(user_id: friend.id) })
-             .sort_by { |post| post.created_at }.reverse!
+    # @posts = (Post.where(user_id: user.id) +
+    #           user.friends.inject([]) { |acc, friend| acc + Post.where(user_id: friend.id) })
+    #          .sort_by { |post| post.created_at }.reverse!
+    # query = <<~SQL
+    #   SELECT *
+    #   FROM posts
+
+    #   INNER JOIN friendships
+    #   ON friendships.friend_id = posts.user_id
+
+    #   INNER JOIN users
+    #   ON users.id = posts.user_id OR users.id = friendships.user_id
+
+    #   WHERE users.id = #{user.id}
+    #   ORDER BY posts.created_at DESC
+    # SQL
+
+    # @posts = ActiveRecord::Base.connection.exec_query(query).to_a
+    @posts = Post.joins('INNER JOIN friendships ON friendships.friend_id = posts.user_id')
+                 .joins('INNER JOIN users ON users.id = posts.user_id OR users.id = friendships.user_id')
+                 .where('users.id = ?', user.id).order(created_at: :desc)
   end
 
   def new
