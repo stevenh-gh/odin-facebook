@@ -6,10 +6,13 @@
 <br>
 
 <% @users.each do |u| %>
-  Name: <%= u.name %> (<%= link_to('Add friend', friend_requests_path(sender_id: current_user.id, receiver_id: u.id), method: :post) %>)<br>
+  <% unless current_user.friends.include?(u) || !FriendRequest.where(sender_id: current_user.id).find_by(receiver_id: u.id).nil? %>
+  Name: <%= u.name %><br>
   Email: <%= u.email %><br>
-  Posts: <%= link_to('View posts', user_posts_path(u)) %><br>
+  Posts: <%= link_to('View posts', user_posts_path(u)) %>
+  <%= button_to('Add friend', friend_requests_path(sender_id: current_user.id, receiver_id: u.id), method: :post) %>
   <br>
+  <% end %>
 <% end %>
 
 <%= render('layouts/links') %>

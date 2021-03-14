@@ -7,8 +7,11 @@
   <%= link_to('Likes',  user_post_likes_path(current_user, post), method: :post) %> (<%= post.likes.count %>)
 
   <% if current_user.likes.exists?(post_id: post.id) %>
-    <%= link_to('Unlike', user_post_like_path(current_user, post, current_user.likes.where(post_id: post.id).first), method: :delete) %><br>
+    <%= link_to('Unlike', user_post_like_path(current_user, post, current_user.likes.where(post_id: post.id).first), method: :delete) %>
   <% end %>
+
+  <br>
+  <%= post.user.name %><br>
   <br>
 <% end %>
 
