@@ -2,7 +2,7 @@
 
 <% @friendships.each do |f| %>
   <ul>
-    <li><%= f.friend.name %> (<%= link_to('Delete', friendship_path(f), method: :delete) %>)</li>
+    <li><%= link_to(f.friend.name, user_profile_path(f.friend)) %> (<%= link_to('Delete', friendship_path(f), method: :delete) %>)</li>
   </ul>
 <% end %>
 
